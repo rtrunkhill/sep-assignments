@@ -3,6 +3,39 @@ Answer: Increasing the chance of reference an object by reference the object(s) 
 
 2.Compare the performance of an Array to a Linked List using the Benchmark module.
  * Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
+     Answer:
+        "Array to 10k"
+        0.000000   0.000000   0.000000 (  0.005471)
+        "10k Node LList"
+        0.010000   0.000000   0.010000 (  0.007833)
+ 
  * Compare the time it takes to access the 5000th element of the Array and the 5000th Node in the Linked List.
+     Answer:
+        "Array to 5k object"
+        0.000000   0.000000   0.000000 (  0.000004)
+        "LList to 5k node"
+        0.000000   0.000000   0.000000 (  0.000658)
+
  * Compare the time it takes to remove the 5000th element from the Array to removing the 5000th Node in the Linked List.
    **In the Array, the 5001st item becomes the 5000th, and so on.
+      Answer:
+        "Array delete 5k object"
+        0.000000   0.000000   0.000000 (  0.000017)
+        "LList delete 5k node"
+        0.000000   0.000000   0.000000 (  0.001377)
+
+
+
+Complete Benchmark Results:
+"Array to 10k"
+  0.000000   0.000000   0.000000 (  0.005471)
+"10k Node LList"
+  0.010000   0.000000   0.010000 (  0.007833)
+"Array to 5k object"
+  0.000000   0.000000   0.000000 (  0.000004)
+"LList to 5k node"
+  0.000000   0.000000   0.000000 (  0.000658)
+"Array delete 5k object"
+  0.000000   0.000000   0.000000 (  0.000017)
+"LList delete 5k node"
+  0.000000   0.000000   0.000000 (  0.001377)
