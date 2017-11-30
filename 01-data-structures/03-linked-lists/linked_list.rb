@@ -1,4 +1,5 @@
 require_relative 'node'
+require 'benchmark'
 
 class LinkedList
   attr_accessor :head
@@ -28,7 +29,7 @@ class LinkedList
       @tail = current
       @tail.next = nil
     else
-      return nil
+      @tail = nil
     end
   end
 
