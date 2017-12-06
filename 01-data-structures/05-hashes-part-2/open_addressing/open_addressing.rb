@@ -44,30 +44,11 @@ class OpenAddressing
 
   # Given an index, find the next open index in @items
   def next_open_index(index)
-    first_index = index
-    while index <= (@size -1)
-      if @items[index] == nil
-        return index
-      elsif @items[index] != nil && index == (first_index - 1)
-        return -1
-      elsif @items[index] != nil && @items[index] == (@size -1)
-        index = 0
-      else
-        index += 1
-      end
+    if @items.any?{ |i| i.nil? } === true
+      index += 1
+    elsif @items.any?{ |i| i.nil? } === false
+      return -1
     end
-    -1
-    
-    # if @items.any?{ |i| i.nil? } === true
-    #   @items.each do |i|
-    #     if i == nil
-    #       i = @items[index]
-    #       break
-    #     end
-    #   end
-    # else
-    #   return -1
-    # end
   end
 
 
