@@ -122,22 +122,21 @@ class SeparateChaining
   def resize
     @size = @size * 2
     temp = Array.new(@size)
-    puts "temp.size: #{temp.size}"
     
-    @items.each do |i|
-      p "i: #{i}"
-      if @items[i] != nil
-        until @items[i] == nil
-          current  = @items[i].remove_front
-          newIndex = index(current.key, @size)
-          # p "newIndex: #{newIndex}"
-          temp[newIndex] = LinkedList.new
-          temp[newIndex].add_to_front(current)
-        end
+    (0..@items.size-1).each do |i|
+      list = @items[i]
+      if list != nil
+          current  = list.head
+          newIndex = index(current.key, temp.size)
+          while current != nil
+            list = LinkedList.new
+            list.add_to_front(current)
+            temp[newIndex] = list
+            current = current.next
+          end
       end
-      
+     end 
     @items = temp
-    end 
   end
 end
     # @items[i] != nil ? llist = @items[i] : llist = LinkedList.new
