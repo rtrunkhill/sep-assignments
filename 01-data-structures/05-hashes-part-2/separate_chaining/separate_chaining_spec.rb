@@ -15,13 +15,18 @@ RSpec.describe SeparateChaining, type: Class do
   end
 
   describe "#index" do
+    p "index rspec"
     it "creates a hash key based on the string value passed in" do
       i = star_wars_movies.index("Star Wars: A New Hope", 6)
+      p "**********"
+      p "index respec: #{i}"
       expect(i).to eq 4
     end
   end
 
   describe "#key" do
+    p "***************************************"
+    p "key rspec"
     it "returns the sum of the ascii values of the string value" do
       key = "test"
       expect(star_wars_movies.index(key, 6)).to eq 4
@@ -29,6 +34,8 @@ RSpec.describe SeparateChaining, type: Class do
   end
 
   describe "#hash[key] = value" do
+    p "***************************************"
+    p "hash test"
     it "does not resize the array when a collision occurs and the values match" do
       hash = SeparateChaining.new(4)
       hash["key"] = "value"
@@ -55,6 +62,8 @@ RSpec.describe SeparateChaining, type: Class do
   end
 
   describe "#load_factor" do
+        p "***************************************"
+    p "load_factor test"
     it "returns the number of items in the hash divided by the size of the underlying array" do
       h = SeparateChaining.new(4)
 
@@ -74,6 +83,8 @@ RSpec.describe SeparateChaining, type: Class do
   end
 
   describe "#resize" do
+        p "***************************************"
+    p "resize test"
     it "doubles the size of the array when invoked" do
       movies = SeparateChaining.new(6)
       expect(movies.size).to eq 6

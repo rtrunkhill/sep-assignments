@@ -34,8 +34,11 @@ RSpec.describe OpenAddressing, type: Class do
       hash = OpenAddressing.new(4)
       hash["key"] = "value"
       expect(hash.size).to eq 4
+      p "*********"
+      p "first size: #{hash.size}"
       hash["key"] = "second value"
       expect(hash.size).to eq 4
+      p "second size: #{hash.size}"
     end
 
     it "resizes the array when a collision occurs and hash is full" do
