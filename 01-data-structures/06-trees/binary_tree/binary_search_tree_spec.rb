@@ -20,6 +20,8 @@ RSpec.describe BinarySearchTree, type: Class do
 
   describe "#insert(data)" do
     it "properly inserts a new node as a left child" do
+      p "**************************"
+      p "RSPEC Inserts new as left"
       tree.insert(root, pacific_rim)
       expect(root.left.title).to eq "Pacific Rim"
     end
@@ -55,6 +57,8 @@ RSpec.describe BinarySearchTree, type: Class do
   end
 
   describe "#find(data)" do
+    p "*************************************"
+    p "RSPEC #find(data)"
     it "handles nil gracefully" do
       tree.insert(root, empire)
       tree.insert(root, mad_max_2)
@@ -97,6 +101,8 @@ RSpec.describe BinarySearchTree, type: Class do
   end
 
   describe "#delete(data)" do
+  p "*********************************************"
+  p "RSPEC detele(data)"
     it "handles nil gracefully" do
       expect(tree.delete(root, nil)).to eq nil
     end
@@ -143,34 +149,36 @@ RSpec.describe BinarySearchTree, type: Class do
   end
 
   describe "#printf" do
-     specify {
-       expected_output = "The Matrix: 87\nStar Wars: Return of the Jedi: 80\nStar Wars: A New Hope: 93\nPacific Rim: 72\nInception: 86\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nBraveheart: 78\nThe Shawshank Redemption: 91\nMad Max 2: The Road Warrior: 98\nDistrict 9: 90\n"
-       tree.insert(root, hope)
-       tree.insert(root, empire)
-       tree.insert(root, jedi)
-       tree.insert(root, martian)
-       tree.insert(root, pacific_rim)
-       tree.insert(root, inception)
-       tree.insert(root, braveheart)
-       tree.insert(root, shawshank)
-       tree.insert(root, district)
-       tree.insert(root, mad_max_2)
-       expect { tree.printf }.to output(expected_output).to_stdout
-     }
+  p "*********************************"
+  p "RSPEC printf"
+    specify {
+      expected_output = "The Matrix: 87\nStar Wars: Return of the Jedi: 80\nStar Wars: A New Hope: 93\nPacific Rim: 72\nInception: 86\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nBraveheart: 78\nThe Shawshank Redemption: 91\nMad Max 2: The Road Warrior: 98\nDistrict 9: 90\n"
+      tree.insert(root, hope)
+      tree.insert(root, empire)
+      tree.insert(root, jedi)
+      tree.insert(root, martian)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, inception)
+      tree.insert(root, braveheart)
+      tree.insert(root, shawshank)
+      tree.insert(root, district)
+      tree.insert(root, mad_max_2)
+      expect { tree.printf }.to output(expected_output).to_stdout
+    }
 
-     specify {
-       expected_output = "The Matrix: 87\nBraveheart: 78\nMad Max 2: The Road Warrior: 98\nPacific Rim: 72\nInception: 86\nDistrict 9: 90\nStar Wars: Return of the Jedi: 80\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nStar Wars: A New Hope: 93\n"
-       tree.insert(root, mad_max_2)
-       tree.insert(root, district)
-       tree.insert(root, shawshank)
-       tree.insert(root, braveheart)
-       tree.insert(root, inception)
-       tree.insert(root, pacific_rim)
-       tree.insert(root, martian)
-       tree.insert(root, jedi)
-       tree.insert(root, empire)
-       tree.insert(root, hope)
-       expect { tree.printf }.to output(expected_output).to_stdout
-     }
+    specify {
+      expected_output = "The Matrix: 87\nBraveheart: 78\nMad Max 2: The Road Warrior: 98\nPacific Rim: 72\nInception: 86\nDistrict 9: 90\nStar Wars: Return of the Jedi: 80\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: The Empire Strikes Back: 94\nStar Wars: A New Hope: 93\n"
+      tree.insert(root, mad_max_2)
+      tree.insert(root, district)
+      tree.insert(root, shawshank)
+      tree.insert(root, braveheart)
+      tree.insert(root, inception)
+      tree.insert(root, pacific_rim)
+      tree.insert(root, martian)
+      tree.insert(root, jedi)
+      tree.insert(root, empire)
+      tree.insert(root, hope)
+      expect { tree.printf }.to output(expected_output).to_stdout
+    }
   end
 end
