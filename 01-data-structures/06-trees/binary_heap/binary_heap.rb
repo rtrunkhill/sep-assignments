@@ -8,20 +8,16 @@ class BinaryHeap
   end
 
   def insert(root, node)
-    p "root.title before/after: #{root.title}"
-    p "node.title before/after: #{node.title}"
+    p "root.title before/after swap: #{root.title}"
+    p "node.title bfore/after swar: #{node.title}"
     if node.rating > root.rating
       hold = root
-      root = node
+      @root = node
       node = hold
-      p "node after swap: #{node.title}"
-      p "root after swap: #{root.title}"
-      insert(root, node)
+      insert(@root, node)
     else
       if root.left.nil?
         root.left = node
-        p "root.title after swap and insert: #{root.title}"
-        p "root.left.title after swap: #{root.left.title}"
       elsif root.right.nil? && root.left != nil
         root.right = node
       elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
@@ -30,9 +26,6 @@ class BinaryHeap
         insert(root.left, node)
       end
     end 
-        # p "root.title after complete: #{root.title}"
-        # p "root.left.title after complete: #{root.left.title}"
-
   end
 
   # Recursive Depth First Search
