@@ -9,8 +9,9 @@ class BinaryHeap
 
   def insert(root, node)
     p "root.title before/after swap: #{root.title}"
-    p "node.title bfore/after swar: #{node.title}"
-    if node.rating > root.rating
+    p "node.title before/after swap: #{node.title}"
+    p "*****************************"
+    if node.rating < root.rating
       hold = root
       @root = node
       node = hold
