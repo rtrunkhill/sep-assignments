@@ -19,6 +19,7 @@ class BinaryHeap
     else
       if root.left.nil?
         root.left = node
+        p "root.left.title: #{root.left.title}"
       elsif root.right.nil? && root.left != nil
         root.right = node
       elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
