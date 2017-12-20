@@ -8,9 +8,9 @@ class BinaryHeap
   end
 
   def insert(root, node)
-    p "root.title before/after swap: #{root.title}"
-    p "node.title before/after swap: #{node.title}"
-    p "*****************************"
+    # p "root.title before/after swap: #{root.title}"
+    # p "node.title before/after swap: #{node.title}"
+    # p "*****************************"
     if node.rating < root.rating
       hold = root
       @root = node
@@ -19,7 +19,7 @@ class BinaryHeap
     else
       if root.left.nil?
         root.left = node
-        p "root.left.title: #{root.left.title}"
+        # p "root.left.title: #{root.left.title}"
       elsif root.right.nil? && root.left != nil
         root.right = node
       elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil

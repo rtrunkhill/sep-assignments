@@ -21,31 +21,36 @@ RSpec.describe BinaryHeap, type: Class do
   
   describe "#insert(data)" do
     it "properly inserts a new node and exchange with root if needed" do
-      heap.insert(root, pacific_rim)
-      expect(root.title).to eq "The Pacific Rim"
-      # expect(root.left.title).to eq "The Matrix"
+      heap.insert(heap.root, pacific_rim)
+      expect(heap.root.title).to eq "Pacific Rim"
+      expect(heap.root.left.title).to eq "The Matrix"
     end
     
-    # it "inserts and swaps node" do
-    #   heap.insert(root, district)
-    #   expect(heap.root.title).to eq "District 9"
-    #   expect(heap.root.left.title).to eq "The Matrix"
-    # end
-
-    # it "properly inserts a new node as a right child exchange with root if needed" do
-    #   heap.insert(root, pacific_rim)
-    #   heap.insert(root, braveheart)
-    #   expect(root.left.title).to eq "Pacific Rim"
-    #   expect(root.right.title).to eq "Braveheart"
-    # end
+    it "properly inserts a new node as a right child" do
+      heap.insert(heap.root, pacific_rim)
+      heap.insert(heap.root, braveheart)
+      expect(heap.root.title).to eq "Pacific Rim"
+      expect(heap.root.left.title).to eq "The Matrix"
+      expect(heap.root.right.title).to eq "Braveheart"
+    end
     
-    # it "properly inserts a new node as a left-left child and exchange as needed" do
-    #   heap.insert(root, pacific_rim)
-    #   heap.insert(root, braveheart)
-    #   heap.insert(root, jedi)
-    #   expect(heap.root.left.title).to eq "Star Wars: Return of the Jedi"
-    #   expect(heap.root.left.left.title).to eq "Pacific Rim"
-    # end
+    it "properly inserts a new node as a left-left child and exchange as needed" do
+      heap.insert(heap.root, pacific_rim)
+      heap.insert(heap.root, braveheart)
+        p "****************"
+      p "heap.root.title: #{heap.root.title}: #{heap.root.rating}"
+      p "heap.root.left.title #{heap.root.left.title}: #{heap.root.left.rating}"
+      p "heap.root.right.title: #{heap.root.right.title}: #{heap.root.right.rating}"
+
+      heap.insert(heap.root, jedi)
+      p "****************"
+      p "heap.root.title: #{heap.root.title}: #{heap.root.rating}"
+      p "heap.root.left.title #{heap.root.left.title}: #{heap.root.left.rating}"
+      p "heap.root.right.title: #{heap.root.right.title}: #{heap.root.right.rating}"
+
+      # expect(heap.root.left.title).to eq "Star Wars: Return of the Jedi"
+      # expect(heap.root.left.left.title).to eq "Phe Matrix"
+    end
 
 
     # it "properly inserts a new node as a left-right child" do
