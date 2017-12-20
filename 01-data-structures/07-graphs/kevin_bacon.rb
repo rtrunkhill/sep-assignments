@@ -19,3 +19,8 @@ class KevinBacon
         films = []
     end
 end
+
+thoughts:  
+* set an array seperation
+* if film_actor_hash != include kevin_bacon then seperation << film_actor_hash
+* select first act
