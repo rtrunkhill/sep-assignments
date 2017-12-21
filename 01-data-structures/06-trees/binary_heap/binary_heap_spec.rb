@@ -37,7 +37,7 @@ RSpec.describe BinaryHeap, type: Class do
     it "properly inserts a new node as a left-left child and exchange as needed" do
       heap.insert(heap.root, pacific_rim)
       heap.insert(heap.root, braveheart)
-        p "****************"
+      p "****************"
       p "heap.root.title: #{heap.root.title}: #{heap.root.rating}"
       p "heap.root.left.title #{heap.root.left.title}: #{heap.root.left.rating}"
       p "heap.root.right.title: #{heap.root.right.title}: #{heap.root.right.rating}"
