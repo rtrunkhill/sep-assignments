@@ -15,8 +15,20 @@ require_relative 'node'
 
 class KevinBacon
 
+    def initialize(star)
+        @star = star
+    end
+    
     def find_kevin_bacon(star)
         films = []
+        return movie[0] if star == kevin_bacon
+        if star != kevin_bacon
+            films << movie[0]
+            return films if movie[0].include?(kevin_bacon)
+        else
+            nextstar = film_actor_hash[0]
+            find_kevin_bacon(nextstar)
+        end
     end
 end
 

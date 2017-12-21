@@ -3,13 +3,14 @@ class Node
   attr_accessor :film_actor_hash
     # @film_actor_hash = film_actor_hash
   
-  def initialize(name, movies)
+  def initialize(name)
       @name = name
-      @movies = [movies]
+      # @movies = [movies]
   end
   
-  def movie_actors(movie, actors)
+  def film_actor_hash(movie, actors)
     @film_actor_hash = Hash.new
     @film_actor_hash[movie] = [actors]
+    actors.delete(@name) if actors.include?(@name) #this isn't right
   end
 end
