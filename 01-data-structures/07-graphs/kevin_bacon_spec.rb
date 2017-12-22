@@ -6,7 +6,7 @@ require_relative 'node'
 RSpec.describe KevinBacon, type: Class do
     # kevin_bacon.film_actor_hash['Footloose'] = [Lori_Singer, John_Lithgow, Dianne_Wiest, Chris_Penn, Sarah_Jessica_Parker, …]
     
-    let (:graph) { KevinBacon.new(star) }
+    # let (:graph) { KevinBacon.new(star) }
     let (:kevin_bacon) { Node.new("Kevin Bacon") }
     let (:chuck) { Node.new("Chuck") }
     let (:paul) { Node.new("Paul") }
@@ -59,7 +59,7 @@ RSpec.describe KevinBacon, type: Class do
     describe "#find_kevin_bacon" do
         it "checks if start node == kevin_bacon" do
             graph.find_kevin_bacon(kevin_bacon)
-            expect(films.last).to eq "Footloose"
+            expect(films).to eq "Footloose"
         end
         
         # it "returns films array if start node != kevin_bacon"
