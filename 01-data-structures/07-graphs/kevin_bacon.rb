@@ -15,24 +15,19 @@ require_relative 'node'
 
 class KevinBacon
 
-    def initialize(star)
-        @star = star
-    end
-    
     def find_kevin_bacon(star)
         films = []
-        return movie[0] if star == kevin_bacon
-        if star != kevin_bacon
-            films << movie[0]
-            return films if movie[0].include?(kevin_bacon)
-        else
-            nextstar = film_actor_hash[0]
-            find_kevin_bacon(nextstar)
+        star.film_actor_hash.each do |movie, stars|
+            stars.each do |star|
+                films << movie if star == kevin_bacon
+                find_kevin_bacon(star) if star != kevin_bacon
+            end
         end
+        films.length <= 6 ? (return films) : (return "No Bacon for #{star}!") 
     end
 end
 
-thoughts:  
-* set an array seperation
-* if film_actor_hash != include kevin_bacon then seperation << film_actor_hash
-* select first act
+# thoughts:  
+# * set an array seperation
+# * if film_actor_hash != include kevin_bacon then seperation << film_actor_hash
+# * select first act
