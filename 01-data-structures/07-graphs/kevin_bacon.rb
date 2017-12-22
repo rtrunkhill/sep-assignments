@@ -17,13 +17,17 @@ class KevinBacon
 
     def find_kevin_bacon(star)
         films = []
-        star.film_actor_hash.each do |movie, stars|
-            stars.each do |star|
-                films << movie if star == kevin_bacon
-                find_kevin_bacon(star) if star != kevin_bacon
+        if films.length > 6
+            return "No Bacon here!"
+        else
+            star.film_actor_hash.each do |movie, actors|
+                films << movie
+                actors.each do |hero|
+                    hero == kevin_bacon ? (return films) : find_kevin_bacon(hero)
+                end
             end
         end
-        films.length <= 6 ? (return films) : (return "No Bacon for #{star}!") 
+        # films.length <= 6 ? (return films) : (return "No Bacon for #{star}!") 
     end
 end
 

@@ -4,6 +4,5 @@ class Node
   
   def initialize(name)
       @name = name
-      # @movies = [movies]
   end
 end
