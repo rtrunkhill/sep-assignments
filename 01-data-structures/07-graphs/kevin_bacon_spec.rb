@@ -17,7 +17,7 @@ RSpec.describe KevinBacon, type: Class do
     # let (:mitch) { Node.new("Mitch") }
     # let (:nancy) { Node.new("Nancy") }
     # let (:michelle) {Node.new("Michelle") }
-  
+
     kevin_bacon.film_actor_hash['Footloose'] = [donald, chuck]
     kevin_bacon.film_actor_hash['A Few Good Men'] = [hillary]
     chuck.film_actor_hash['Footloose'] = [kevin_bacon, donald]
