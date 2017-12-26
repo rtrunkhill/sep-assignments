@@ -12,13 +12,11 @@ class BinaryHeap
       hold = root
       @root = node
       node = hold
-      # p "CURRENT root title:  #{@root.title} and node-to-insert title: #{node.title}"
       insert(@root, node)
     elsif node.rating < root.rating       
       hold = root
       root = node
       node = hold
-      # p "RECURSIVE root title:  #{root.title} and node-to-insert title: #{node.title}"
       insert(root, node)
     else
       if root.left.nil?
@@ -36,14 +34,13 @@ class BinaryHeap
 
   # Recursive Depth First Search
   def find(root, data)
-    return nil if data.nil?
-    if root.title == data
-      return root
-    elsif root.left != nil
-      find(root.left, data)
-    elsif root.right != nil
-      find(root.right, data)
-    end
+    return nil if data.nil? || root.nil?
+    return root if root.title == data
+    right = find(root.right, data)
+    left = find(root.left, data)
+    return right if right != nil
+    return left if left != nil
+    return nil if right.nil? && left.nil?
   end
 
   def delete(root, data)
