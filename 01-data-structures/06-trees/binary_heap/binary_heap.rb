@@ -8,18 +8,22 @@ class BinaryHeap
   end
 
   def insert(root, node)
-    # p "root.title before/after swap: #{root.title}"
-    # p "node.title before/after swap: #{node.title}"
-    # p "*****************************"
-    if node.rating < root.rating
+    if node.rating < @root.rating
       hold = root
       @root = node
       node = hold
+      # p "CURRENT root title:  #{@root.title} and node-to-insert title: #{node.title}"
       insert(@root, node)
+    elsif node.rating < root.rating       
+      hold = root
+      root = node
+      node = hold
+      # p "RECURSIVE root title:  #{root.title} and node-to-insert title: #{node.title}"
+      insert(root, node)
     else
       if root.left.nil?
+        @root.left = root
         root.left = node
-        # p "root.left.title: #{root.left.title}"
       elsif root.right.nil? && root.left != nil
         root.right = node
       elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
