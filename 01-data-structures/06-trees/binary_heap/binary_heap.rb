@@ -23,6 +23,7 @@ class BinaryHeap
         @root.left = root
         root.left = node
       elsif root.right.nil? && root.left != nil
+        # @root.right = root this breaks the root.left.right. insert
         root.right = node
       elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
         insert(root.right, node)
