@@ -18,13 +18,21 @@ RSpec.describe BinaryHeap, type: Class do
   let (:empire) { Node.new("Star Wars: The Empire Strikes Back", 94) }
   let (:mad_max_2) { Node.new("Mad Max 2: The Road Warrior", 98) }
 
-  
-  describe "#insert(data)" do
-    it "properly inserts a new node and exchange with root if needed" do
-      heap.insert(heap.root, pacific_rim)
-      expect(heap.root.title).to eq "Pacific Rim"
-      expect(heap.root.left.title).to eq "The Matrix"
+  describe "#initialize" do
+    it "sets @root to passed node" do
+      tree = MinBinaryHeap.new(root)
+      expect(tree.items[0]).to eq root
     end
+  end
+
+  
+  
+  # describe "#insert(data)" do
+  #   it "properly inserts a new node and exchange with root if needed" do
+  #     heap.insert(heap.root, pacific_rim)
+  #     expect(heap.root.title).to eq "Pacific Rim"
+  #     expect(heap.root.left.title).to eq "The Matrix"
+  #   end
     
     # it "properly inserts a new node as a right child" do
     #   heap.insert(heap.root, pacific_rim)
@@ -63,7 +71,7 @@ RSpec.describe BinaryHeap, type: Class do
     #   p "printf #2: #{heap.printf}"
     #   expect(heap.root.right.left.title).to eq "Inception"
     # end
-  end
+  # end
 
   # describe "#find(data)" do
   #   it "handles nil gracefully" do
