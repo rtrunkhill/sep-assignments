@@ -5,34 +5,28 @@ class BinaryHeap
   
   def initialize(root)
     @root = root
+    @array = [@root]
   end
 
-  def insert(root, node)
-    if node.rating < @root.rating
-      hold = root
-      @root = node
-      node = hold
-      insert(@root, node)
-    elsif node.rating < root.rating       
-      hold = root
-      root = node
-      node = hold
-      insert(root, node)
-    else
-      if root.left.nil?
-        @root.left = root
-        root.left = node
-      elsif root.right.nil?
-      # && root.left != nil might need this again
-        # @root.right = root this breaks the root.left.right. insert
-        root.right = node
-      elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
-        # root.right = root (this creates an infinite loop)
-        insert(root.right, node)
-      elsif root.left != nil && root.right !=nil
-        insert(root.left, node)
-      end
-    end 
+  def insert(node)
+    @array << node unless @array.include?(node)
+    p "@array: #{@array}"
+    @array = @array.sort_by {|node| node.rating}
+    @root = @array[0]
+    
+    @array.drop(1).each do |node|
+        if root.left.nil? 
+            root.left = node
+            break
+        elsif root.right.nil? && root.left != nil
+            root.right = node
+            break
+        # elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
+        #     insert(root.right, node)
+        # elsif root.left != nil && root.right !=nil
+        #     insert(root.left, node)
+        end
+    end
   end
 
   # Recursive Depth First Search

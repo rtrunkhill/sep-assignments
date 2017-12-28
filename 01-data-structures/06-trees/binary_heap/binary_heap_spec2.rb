@@ -1,6 +1,6 @@
 include RSpec
 
-require_relative 'binary_heap'
+require_relative 'binary_heap2'
 
 RSpec.describe BinaryHeap, type: Class do
   let (:root) { Node.new("The Matrix", 87) }
@@ -21,18 +21,18 @@ RSpec.describe BinaryHeap, type: Class do
   
   describe "#insert(data)" do
     it "properly inserts a new node and exchange with root if needed" do
-      heap.insert(heap.root, pacific_rim)
+      heap.insert(pacific_rim)
       expect(heap.root.title).to eq "Pacific Rim"
       expect(heap.root.left.title).to eq "The Matrix"
     end
     
-    # it "properly inserts a new node as a right child" do
-    #   heap.insert(heap.root, pacific_rim)
-    #   heap.insert(heap.root, braveheart)
-    #   expect(heap.root.title).to eq "Pacific Rim"
-    #   expect(heap.root.left.title).to eq "The Matrix"
-    #   expect(heap.root.right.title).to eq "Braveheart"
-    # end
+    it "properly inserts a new node as a right child" do
+      heap.insert(pacific_rim)
+      heap.insert(braveheart)
+      expect(heap.root.title).to eq "Pacific Rim"
+      expect(heap.root.left.title).to eq "The Matrix"
+      expect(heap.root.right.title).to eq "Braveheart"
+    end
     
     # it "properly inserts a new node as a left-left child and exchange as needed" do
     #   heap.insert(heap.root, pacific_rim)
