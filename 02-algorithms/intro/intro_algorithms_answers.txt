@@ -1,0 +1,49 @@
+Psuedo Code Algorthims:
+A. Going to the dog park
+    1. Go to closet
+    2. grab leashes
+    3. call dogs
+    4. leash dogs in any order
+    5. grab leashes
+    6. command 'sit' and 'stay'
+    7. open door to garage and garage door
+    8. command 'outside'
+    9. Open car
+    10. commad dogs 'inside' car
+    11. close garage door
+    12. drive to dog park
+    13. wife opens entrance to dog park
+    14. release dogs from car
+    15. park car
+    16. enter dog park
+
+B. Doing the dishes
+    1. gather stray dishes from around the house
+    2. re organize dishwasher for max capacity
+    3. fill dishwasher with all dirty dishes not already inside
+    4. grab soap from under sink
+    5. fill soap compartment with soap
+    6. close soap compartment door
+    7. select dishwasher settings
+    8. press start
+    9. close dishwasher door
+    10. wait until end of cycle
+    11. wait until dishes dry/cool
+    12. put away silveware
+    13. put away top-shelf dishes
+    14. put away bottom-shelf dishes
+    15. close dishwasher
+    
+C. Making The bed
+    1. clear spot in bathroom for pillows and comforters
+    2. gather new sheets and pillow cases
+    3. remove old pillow cases
+    4. place uncoverd pillows and comforters in cleared spot
+    5. remove all dirty sheets
+    6. put fresh bottom sheet on bed
+    7. put fresh top sheet on bed
+    8. put comforters back on bed
+    9. cover pillows with fresh pillow cases
+    10. put covered pillows on bed
+    11. turn down bed
+    12. take dirty sheets to laundry
