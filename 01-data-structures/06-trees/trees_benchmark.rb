@@ -7,7 +7,7 @@ hroot = Node.new("Heap Root", 77)
 tree = BinarySearchTree.new(troot)
 heap = BinaryHeap.new(hroot)
 
-n = 100000
+n = 10000
 
 Benchmark.bm do |x|
     x.report("tree insert") do
@@ -24,11 +24,24 @@ Benchmark.bm do |x|
   end
 end
 
-# Benchmark.bm(7) do |x|
-#   x.report("for:")   { 
-#       for i in 1..n 
-#         a = "1" 
-#       end 
-#   }
-  
-# end
+find_me = Node.new("50k", 5000)
+tree.insert(troot, find_me)
+heap.insert(find_me)
+
+Benchmark.bm do |x|
+  x.report("tree find") do
+      tree.find(troot, 5000)
+  end
+   x.report("heap find") do
+     heap.find("50k")
+   end
+end
+
+Benchmark.bm do |x|
+  x.report("tree delete") do
+      tree.delete(troot, 5000)
+  end
+  x.report("heap delete") do
+     heap.delete("50k")
+  end
+end

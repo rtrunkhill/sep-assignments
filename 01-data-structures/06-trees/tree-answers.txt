@@ -1,0 +1,22 @@
+How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+                 user     system      total        real
+tree delete  0.000000   0.000000   0.000000 (  0.000018)
+heap delete  0.000000   0.000000   0.000000 (  0.004487)
+
+When would you use a Binary Search Tree and why?
+Anytime I had to input very large sets of data because all functions work faster
+
+When would you use an Heap and why?
+If i had small sets of data and/or if organization is more important to me than effeciency
+
+
+Benchmark data
+                 user     system      total        real
+tree insert  0.040000   0.000000   0.040000 (  0.041352)
+heap insert 22.970000   0.080000  23.050000 ( 23.063946)
+                user     system      total        real
+tree find   0.000000   0.000000   0.000000 (  0.000024)
+heap find   0.000000   0.000000   0.000000 (  0.000088)
+                 user     system      total        real
+tree delete  0.000000   0.000000   0.000000 (  0.000018)
+heap delete  0.000000   0.000000   0.000000 (  0.004487)
