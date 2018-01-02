@@ -33,19 +33,4 @@ class BinaryHeap
   def printf
     @items.each { |movie| puts "#{movie.title}: #{movie.rating}" }
   end
-  
-  
-  def parent(node_index)
-    (node_index.to_f / 2).round - 1
-  end
-
-  def left(node_index)
-    left_index = (node_index * 2) + 1
-    left_index < @size ? left_index : nil
-  end
-
-  def right(node_index)
-    right_index = (node_index * 2) + 2
-    right_index < @size ? right_index : nil
-  end
 end
