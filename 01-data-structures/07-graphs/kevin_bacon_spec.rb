@@ -54,26 +54,25 @@ RSpec.describe KevinBacon, type: Class do
     
 
 
-  
 
     describe "#find_kevin_bacon" do
         it "checks if start node == kevin_bacon" do
             graph.find_kevin_bacon(kevin_bacon)
-            # p "*****************"
-            # p "films: #{films}"
-            # expect(films).to eq ['Footloose']
+            p "*****************"
+            p "films: #{films}"
+            expect(films).to eq ['Footloose']
         end
         
-        # it "returns films array if start node != kevin_bacon"
-        #     graph.find_kevin_bacon(paul)
-        #     expect(films).to eq ["Star Wars", "A Christmas Story", "Footloose"]
-        # end
+    #     # it "returns films array if start node != kevin_bacon"
+    #     #     graph.find_kevin_bacon(paul)
+    #     #     expect(films).to eq ["Star Wars", "A Christmas Story", "Footloose"]
+    #     # end
         
-        # it "goes to the first film in film_actor_hash and pushes that film into searched array"
-        # end
+    #     # it "goes to the first film in film_actor_hash and pushes that film into searched array"
+    #     # end
         
-        # it "ends the search if searhed array is > 6"
-        # end
+    #     # it "ends the search if searhed array is > 6"
+    #     # end
     end
 
 end
