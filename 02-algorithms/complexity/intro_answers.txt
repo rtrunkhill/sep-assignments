@@ -1,0 +1,37 @@
+1. Describe an analogy for relating an algorithm that has efficiency O(1) and another algorithm that has O(2n). 
+A. O(1) is a Ferrari while O(2n) is a Pinto 
+
+2. In plain English, what is the best case scenario for binary search?
+A. When the first item searched is the item you are looking for
+
+3. In plain English, what is the worst-case scenario for binary search?
+A. When the last item searched is the item you are looking for
+
+4. In plain English, what is the bounded-case scenario for binary search?
+A. When the item you are looking for is somewhere between the first and last items in the search
+
+5. Create a graph using the data below. Here's a CSV with the values you'll need.
+A. https://docs.google.com/spreadsheets/d/1LiU1ZFuWWrsjSuYxJaRWOlVriBEFDDR47BKhrHDlEA4/edit#gid=0
+
+6.What is the limit of the function above as n approaches infinity?
+A. +infinity
+
+7.What is the Big-O of an algorithm that has the data points above?
+A. Quadratic Time: O(n^2)
+
+8.Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n.
+    def linear_fn(n)
+    	(1..n).map {|x| puts "#{x}, #{x}" }
+    end
+        
+9.Create a graph from the output using Google Sheets or other graphing software. Analyze the graph and denote its Big-O somewhere on the graph.
+A. https://docs.google.com/spreadsheets/d/1LiU1ZFuWWrsjSuYxJaRWOlVriBEFDDR47BKhrHDlEA4/edit#gid=0
+
+10.What is the Big-O of binary search?
+O(n)
+
+11.What is the Big-Ω of binary search?
+Ω(1)
+
+12.What is the Big-Ө of binary search?
+Ө(logn)
