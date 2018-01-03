@@ -9,7 +9,7 @@ def quicksort(array)
     return quicksort(left) + [pivot] + quicksort(right)
 end
 
-def bucketsort(array)
+def bucket_sort(array)
   return array if array.length <= 1
   max_value = (array.max)/3.floor
   first = []
@@ -23,8 +23,8 @@ def bucketsort(array)
   return quicksort(first) + quicksort(second) + quicksort(third)
 end
 
-array1 = [2,5,6,3,7,9,1,4]
-array2 = [13,16,8,13,15,3,7,32,45,68]
+# array1 = [2,5,6,3,7,9,1,4]
+# array2 = [13,16,8,13,15,3,7,32,45,68]
 
-puts "sorted array1: #{bucketsort(array1)}"
-puts "sorted array2: #{bucketsort(array2)}"
+# puts "sorted array1: #{bucketsort(array1)}"
+# puts "sorted array2: #{bucketsort(array2)}"

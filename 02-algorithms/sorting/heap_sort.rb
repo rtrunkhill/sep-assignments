@@ -1,4 +1,4 @@
-def heapsort(array)
+def heap_sort(array)
   return array if array.length <= 1
   heapify(array)
   back = (array.length - 1)
@@ -35,13 +35,13 @@ def sift_down(array, front, back)
   end
 end
   
-array1 = [0,19,14,22,32,7,9,63,4,13]
-array2 = [0,1,2,3,4,5,6,7,8,9]
-array3 = [0,16,29,43,61,39,4,9,93,3,11,10,113]
+# array1 = [0,19,14,22,32,7,9,63,4,13]
+# array2 = [0,1,2,3,4,5,6,7,8,9]
+# array3 = [0,16,29,43,61,39,4,9,93,3,11,10,113]
 
-puts "#{heapsort(array1)}"
-puts "#{heapsort(array2)}"
-puts "#{heapsort(array3)}"
+# puts "#{heapsort(array1)}"
+# puts "#{heapsort(array2)}"
+# puts "#{heapsort(array3)}"
 
 
 

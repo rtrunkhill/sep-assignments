@@ -1,0 +1,7 @@
+                    user     system      total        real
+heap_sort       0.000000   0.000000   0.000000 (  0.000112)
+quick_sort      0.000000   0.000000   0.000000 (  0.000160)
+bucket_sort     0.000000   0.000000   0.000000 (  0.000123)
+
+It sort of suprised me to see heap_sort to be the fastest.  But it seems that the the data can be organized prior to the sort, whether by the heap swaps or by reducing the array size, the faster the sorting functions work.
+It looks like the extra work to needed to do that is more than made up for in the overall performance of the sort.
