@@ -32,7 +32,7 @@ A. Linear Time Complexity: O(n) - this is a linear seach, as the size of the col
         largest
     end
     
-A. Linear Time Complexity: O(n) - this is a linear seach, as the size of the collection grows, so will the length of the search
+A. Quadratic Time: O(n^2) - The nested loop mean you need to perform two actions for every object.  or n*n = n^2
 
 4. What's the Big-O of the following algorithm? Submit your work and reasoning with your solution.
     def numbers(n)
