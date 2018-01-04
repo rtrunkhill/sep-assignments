@@ -17,7 +17,7 @@ A. https://docs.google.com/spreadsheets/d/1LiU1ZFuWWrsjSuYxJaRWOlVriBEFDDR47BKhr
 A. +infinity
 
 7.What is the Big-O of an algorithm that has the data points above?
-A. Quadratic Time: O(n^2)
+A. Exponential time: O(2^n)
 
 8.Write a Ruby method that takes a number n. This method must print the worst-case number of iterations for linear search to find an item in collections of size one to n.
     def linear_fn(n)
