@@ -109,4 +109,4 @@ A. Linear Time Complexity: O(n) - this is a linear seach, as the size of n grows
         collection
     end
     
-A. Quadratic time: O(n^2)  -  The array splits it's self into two pieces then recursively calls upon itself for both pieces.
+A. Exponential time: O(2^n)  -  The array splits it's self into two pieces then recursively calls upon itself for both pieces.
