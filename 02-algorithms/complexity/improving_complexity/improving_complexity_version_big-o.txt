@@ -1,0 +1,18 @@
+                user     system      total        real
+one 250:     0.010000   0.000000   0.010000 (  0.007821)
+one 1k:      0.120000   0.000000   0.120000 (  0.120033)
+one 10K:    12.150000   0.000000  12.150000 ( 12.155073)
+"-----------------------------------------------------"
+two 250:    0.010000   0.000000   0.010000 (  0.002348)
+two 1k:     0.010000   0.000000   0.010000 (  0.011052)
+two 10K:    0.140000   0.000000   0.140000 (  0.143516)
+
+Insertion Sorts (one) O(n^2) really starts to take take it's toll the bigger the arrays get
+it has signficant performance issues.
+
+Heap Sort's (two) O(n log n) performs better at all sizes. This is because it unrolls the loops and breaks the sort into smaller steps.
+
+From what i can see so far, if a sort has divides it search at all, it will operate faster than one that doesn't
+
+Both sorting functions have the same Space Complexity of O(1).  The inserstion sort is more elegant
+and has less code, but it's not a signficant enough to impact space.
