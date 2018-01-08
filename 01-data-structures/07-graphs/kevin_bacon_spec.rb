@@ -11,6 +11,8 @@ RSpec.describe KevinBacon, type: Class do
     let (:paul) { Node.new("Paul") }
     let (:donald) { Node.new("Donald") }
     let (:hillary) { Node.new("Hillary") }
+    let (:nobody) { Node.new("Nobody") }
+    let (:anybody) { Node.new("Anybody")}
 
     before do
         kevin_bacon.film_actor_hash['Footloose'] = [donald, chuck]
@@ -39,15 +41,22 @@ RSpec.describe KevinBacon, type: Class do
         it "checks directly connected actor" do
             graph.find_kevin_bacon(chuck)
             p "*****************"
-            p "films: #{graph.films}"
+            p "chuck films: #{graph.films}"
             expect(graph.films).to eq ['Footloose']
         end
 
         it "checks indirectly connected actor" do
             graph.find_kevin_bacon(paul)
             p "*****************"
-            p "films: #{graph.films}"
+            p "paul films: #{graph.films}"
             expect(graph.films).to eq ["A Few Good Men", "Star Wars"]
+        end
+        
+        it "checks indirectly connected actor" do
+            graph.find_kevin_bacon(hillary)
+            p "*****************"
+            p "hillary films: #{graph.films}"
+            expect(graph.films).to eq ["A Few Good Men"]
         end
     end
 end

@@ -29,17 +29,21 @@ class KevinBacon
     
     
     def find_kevin_bacon(node)
+        return "No Bacon for #{node}!" if @films.length > 6
         if @visited.include? node.name
             return false
         end
         @visited.push(node.name)
+        p "visited: #{@visited}"
 
         if node.name == "Kevin Bacon"
             return true
         end
 
         for film in node.film_actor_hash.keys do
+            p "film***: #{film}"
             for child in node.film_actor_hash[film] do
+                p "child: #{child.name}"
                 if find_kevin_bacon(child)
                     unless @films.include? film
                         @films.push(film)
