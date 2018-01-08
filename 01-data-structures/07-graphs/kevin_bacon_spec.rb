@@ -29,11 +29,25 @@ RSpec.describe KevinBacon, type: Class do
 
 
     describe "#find_kevin_bacon" do
-        it "checks if start node == kevin_bacon" do
-            graph.find_kevin_bacon(kevin_bacon)
+        # it "checks if start node == kevin_bacon" do
+        #     graph.find_kevin_bacon(kevin_bacon)
+        #     p "*****************"
+        #     # p "films: #{films}"
+        #     expect(@films).to eq ['Footloose']
+        # end
+        
+        it "checks directly connected actor" do
+            graph.find_kevin_bacon(chuck)
             p "*****************"
-            # p "films: #{films}"
-            expect(@films).to eq ['Footloose']
+            p "films: #{graph.films}"
+            expect(graph.films).to eq ['Footloose']
+        end
+
+        it "checks indirectly connected actor" do
+            graph.find_kevin_bacon(paul)
+            p "*****************"
+            p "films: #{graph.films}"
+            expect(graph.films).to eq ["A Few Good Men", "Star Wars"]
         end
     end
 end
