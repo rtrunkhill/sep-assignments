@@ -5,5 +5,6 @@ class City
     def initialize(city)
         @city = city
         @neighbors = Hash.new
+        # @neighbors = []
     end
 end

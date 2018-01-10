@@ -1,25 +1,26 @@
 require_relative 'city'
 
 class Salesman
-    
     attr_accessor :visited
 
     def initialize
         @visited = []
-        @cities =[]
     end
 
     def shortest_path(start)
-        return @visited if @visted.include?(start.city)
         current_city = start
-        @visted << current_city.city
+        @visited.include?(current_city.city) ? (return @visited) : @visited << current_city.city
+        p "***********************"
+        p "@visited: #{@visited}"
         
-        for neighbor in start.neighbors.values do
-            current_city = neighbor unless @visted.include?(neighbor.city)
-            break
-            # shortest_path(current_city)
+        for place in current_city.neighbors.keys do
+            p "place: #{place}"
+            for child in current_city.neighbors[place]
+                if shortest_path(child)
+                    @visited << place unless @visited.include? place
+                end
+            end
         end
-        shortest_path(current_city)
     end
 end
 

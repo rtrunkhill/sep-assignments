@@ -13,7 +13,7 @@ RSpec.describe Salesman, type: Class do
     let (:las_vegas) { City.new("Vegas") }
     let (:salt_lake) { City.new("SLC") }
     let (:portland) { City.new("Portland")}
-    let (:boise) { City.new("Boise")
+    let (:boise) { City.new("Boise") }
 
     before do
         seattle.neighbors['Seattle'] = [portland, boise]
@@ -22,7 +22,7 @@ RSpec.describe Salesman, type: Class do
         san_fransico.neighbors['San Fransico'] = [los_angeles, portland]
         los_angeles.neighbors['LA'] = [san_fransico, las_vegas, phoenix]
         phoenix.neighbors['Phoenix'] = [los_angeles, las_vegas]
-        las_vegas.neighbors['Vegas'] = [los_angeles, phoenix, salt_lake]
+        las_vegas.neighbors['Vegas'] = [phoenix, los_angeles, salt_lake]
         salt_lake.neighbors['SLC"'] = [las_vegas, boise]
     end
 
@@ -31,28 +31,7 @@ RSpec.describe Salesman, type: Class do
 
     describe "#finds the proper path" do
         it "checks if start City == seattle" do
-            expect(search.vistied[0]).to eq ['Seattle']
+            expect(search.shortest_path(seattle)).to eq ['Seattle', 'Portland', 'Boise', 'SLC', 'Vegas', 'Phoenix', 'LA', 'San Fransico']
         end
-        
-    #     it "checks directly connected actor" do
-    #         graph.find_kevin_bacon(chuck)
-    #         p "*****************"
-    #         p "chuck films: #{graph.films}"
-    #         expect(graph.films).to eq ['Footloose']
-    #     end
-
-    #     it "checks indirectly connected actor" do
-    #         graph.find_kevin_bacon(paul)
-    #         p "*****************"
-    #         p "paul films: #{graph.films}"
-    #         expect(graph.films).to eq ["A Few Good Men", "Star Wars"]
-    #     end
-        
-    #     it "checks indirectly connected actor" do
-    #         graph.find_kevin_bacon(hillary)
-    #         p "*****************"
-    #         p "hillary films: #{graph.films}"
-    #         expect(graph.films).to eq ["A Few Good Men"]
-    #     end
     end
 end
