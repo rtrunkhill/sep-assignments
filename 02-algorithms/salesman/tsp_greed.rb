@@ -10,11 +10,14 @@ class Salesman
     def shortest_path(start)
         current_city = start
         @visited.include?(current_city.city) ? (return @visited) : @visited << current_city.city
+        # return @visited if @visited.include?(start.city)
+        # current_city = start
+        # @visited << current_city.city
         p "***********************"
         p "@visited: #{@visited}"
         
         for place in current_city.neighbors.keys do
-            p "place: #{place}"
+            # p "place: #{place}"
             for child in current_city.neighbors[place]
                 if shortest_path(child)
                     @visited << place unless @visited.include? place
