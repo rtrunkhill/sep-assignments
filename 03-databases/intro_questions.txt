@@ -1,0 +1,51 @@
+1.Given the values table below, what data types do each of these values represent?
+    A Clockwork Orange = string
+    42 = intiger
+    09/02/1945 = date
+    98.7 = float
+    15.99 = float
+
+2.Explain in your own words when a database might be used. Explain when a text file might be used.
+    databases are used anytime you need to store values for objects.  It can keep large amounts of data organized
+    an example of when you'd use a text file is when you need to explain something, instructions on how to build a desk from supplied parts for example.
+
+3.Describe one difference between SQL and other programming languages.
+    SQL is declaritive and other languages we've use so far are procederial.  Declaritive languages do not require you to do step by step instructions
+    you just tell it what you want and it give it to you, ie, get me a sammich.  Procederial languages requires you to include all the steps.
+    IE, grab ingredients, spread peanut butter on bread, spread jelly on bread, join slices of bread spread etc.  
+
+4.In your own words, explain how the pieces of a database system fit together at a high level.
+    Databases are like the matrix, they are just a series of one's and zeros.  Meaning they store their information in binary file formats.
+
+5.Explain the meaning of table, row, column, and value.
+    A table is a collection of valuess organized by rows and columns
+    Rows are read left to right horizontaly
+    Columns are read top to bottom vertically
+    Values are the objects stored at the intersection of a row and column
+
+6.List 3 data types that can be used in a table.
+    strings
+    intigers
+    booleans
+
+7.Given the payments table below, provide an English description and the results for the following queries:
+    1) from the payments table, give me the all the amounts paid and all the dates of payments
+    2) from the payments table, give me only the amounts paid that are greater than 500
+    3) from the payments table, give me all data related to the payee "Mega Foods"
+
+8.Given the users table below, write the following SQL queries and their results:
+
+    a. Select the email and sign-up date for the user named DeAndre Data.
+        SELECT email, signup
+        FROM users
+        WHERE name  = 'DeAndre Data';
+        
+    b. Select the user ID for the user with email 'aleesia.algorithm@uw.edu'.
+        SELECT userid
+        FROM users
+        WHERE email = 'aleesia.algorithm@uw.edu';
+        
+    c. Select all the columns for the user ID equal to 4.
+        SELECT *
+        FROM users
+        WHERE userid = 4;
