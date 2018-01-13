@@ -1,0 +1,123 @@
+1.List 5 aggregate functions and explain, in your own words, what they are for. Include a real world example for each. If you can’t list these from memory, do these flashcards until you can!
+    MIN - selects the smallest value in the column: give me the smallest dog in the liter
+    MAX - selects the largest value in the column: give me the largest dog in the liter
+    SUM - adds all values in the column together and returns the amount: all 5 of those puppies in that litter weight a combined 15lbs
+    AVG - returns the average of the column: the average weight of puppies in that litter is 3lbs
+    GROUP BY - organizes retured data in specified format: list all dogs in the litter by weight
+    
+2.Create a database called iron-bank-foundation. Create a donations table, and import CSV data from this file. Select the following data from the table:
+
+    a.Find the total of all donations received in the past year.
+        iron_bank_foundation=# SELECT SUM(amount) FROM donations;                                                                                                                             
+            sum 
+            -----
+            993
+            (1 row)
+        
+    b.Find the total donations over time per donor. (i.e. Tanysha has donated 3 times with the amounts $25, $30, and $50. Her total is $105. )
+         iron_bank_foundation=# SELECT SUM(amount) AS total_per_donor, donor FROM donations GROUP BY donor;
+             total_per_donor |   donor    
+             ----------------+------------
+                          20 | Samwell
+                          10 | Daario
+                          75 | Brienne
+                         120 | Tyrion
+                          70 | Petyr
+                          45 | Melisandre
+                          25 | Bran
+                          50 | Tormund
+                          30 | Ygritte
+                           7 | Gilly
+                          25 | Jon
+                          60 | Arya
+                          20 | Theon
+                          20 | Bronn
+                         120 | Margaery
+                          90 | Missandei
+                          33 | Sansa
+                         173 | Daenerys
+            (18 rows)
+    
+    c.What is the average donation per donor?
+        iron_bank_foundation=# SELECT AVG(amount) AS average_per_donor, donor FROM donations GROUP BY donor;
+            average_per_donor   |   donor    
+            ----------------------+------------
+            20.0000000000000000 | Samwell
+            10.0000000000000000 | Daario
+            75.0000000000000000 | Brienne
+            40.0000000000000000 | Tyrion
+            70.0000000000000000 | Petyr
+            45.0000000000000000 | Melisandre
+            25.0000000000000000 | Bran
+            50.0000000000000000 | Tormund
+            30.0000000000000000 | Ygritte
+            7.0000000000000000 | Gilly
+            25.0000000000000000 | Jon
+            20.0000000000000000 | Arya
+            10.0000000000000000 | Theon
+            20.0000000000000000 | Bronn
+            120.0000000000000000 | Margaery
+            22.5000000000000000 | Missandei
+            33.0000000000000000 | Sansa
+            86.5000000000000000 | Daenerys
+            (18 rows)
+    
+    d.How many donations over $100 have been received?
+        iron_bank_foundation=# SELECT COUNT(amount) FROM donations WHERE amount > 100;
+            count 
+            -------
+            2
+            (1 row)
+    
+    e.What is the largest donation received in a single instance from a single donor?
+        iron_bank_foundation=# SELECT MAX(amount) FROM donations;
+            max 
+            -----
+            120
+            (1 row)
+
+    
+    f.What is the smallest donation we’ve received?
+        iron_bank_foundation=# SELECT MIN(amount) FROM donations;                                                                                                                             
+            min 
+            -----
+            5
+            (1 row)
+
+3.How would you determine the display order of data returned by your SELECT statement?
+    ORDER BY (column) ASC/DESC
+
+4.What is a real world situation where you would use OFFSET?
+    A General Manager is giving extra days off and determing them by who has taken the least days off so far.  Runs his table and gives out the first two EDO's.  The next time
+    he runs the table, the does an offset of 2 so that he can pick up where he left off.
+    
+5.Why is it important to use ORDER BY when limiting your results?
+    So the returned data is placed in a useful and easy searchable manner
+
+6.What is the difference between HAVING and WHERE?
+    HAVING is specific to GROUP BY functions
+
+7. Correct the following SELECT statement:
+
+     SELECT id, SUM (amount)
+     FROM payment
+     HAVING SUM (amount) > 200;
+     
+        SELECT SUM(amount) AS total, id FROM payment WHERE total > 200;
+
+8.Write queries to retrieve the following information.
+
+    a. From the cats table, list all cats organized by intake date.
+        SELECT * FROM cats ORDER BY intake_date;
+        
+    b. Given an adoptions table with the columns id, date, adopter, cat, and fee, determine the 5 most recent adoptions to be featured as “Happy Tails” on social media.
+        SELECT * FROM adoptions ORDER BY date LIMIT 5;
+    
+    c. There is a potential adopter looking for an adult female cat. In the most efficient way possible, from the Cats table, list all female cats 2 or more years old.
+        SELECT * FROM adoptions WHERE sex=f AND age >=2;
+    
+    d. From the donations table (described in problem #2), find the top 5 donors with the highest cumulative donation amounts to be honored as “Platinum Donors”.
+        SELECT SUM(amount) AS total_per_donor, donor FROM donations ORDER BY total_per_donor LIMIT 5;
+    
+    e. From the donations table (described in problem #2), find donors 6-15 with the next highest cumulative donation amounts to be honored as “Gold Donors”.
+        SELECT SUM(amount) AS total_per_donor, donor FROM donations GROUP BY total_per_donor LIMIT 5 OFFSET 5;

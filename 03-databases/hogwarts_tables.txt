@@ -1,0 +1,94 @@
+postgres=# SELECT * FROM compensation;
+ id | professor_id | salary | vacation_days 
+----+--------------+--------+---------------
+  1 |            1 |  64000 |             2
+  2 |            2 |  35000 |             8
+  3 |            3 |  56750 |            10
+  4 |            4 |  42950 |             8
+  5 |            5 |  30000 |             4
+  6 |            6 | 102750 |            22
+(6 rows)
+
+postgres=# SELECT SUM(salary) FROM compensation;
+  sum   
+--------
+ 331450
+(1 row)
+
+postgres=# SELECT MAX(salary) FROM compensation;
+  max   
+--------
+ 102750
+(1 row)
+
+postgres=# SELECT MIN(vacation_days) FROM compensation;
+ min 
+-----
+   2
+(1 row)
+
+postgres=# SELECT AVG(salary) FROM compensation;
+        avg         
+--------------------
+ 55241.666666666667
+(1 row)
+
+postgres=# SELECT COUNT (DISTINCT vacation_days) FROM compensation;
+ count 
+-------
+     5
+(1 row)
+
+postgres=# SELECT COUNT(professor_id) FROM compensation;
+ count 
+-------
+     6
+(1 row)
+
+postgres=# SELECT DISTINCT vacation_days FROM compensation;
+ vacation_days 
+---------------
+             8
+             4
+            22
+            10
+             2
+(5 rows)
+
+postgres=# SELECT AVG(salary) AS average_salary, vacation_days FROM compensation GROUP BY vacation_days;                                                                              
+   average_salary    | vacation_days 
+---------------------+---------------
+  38975.000000000000 |             8
+  30000.000000000000 |             4
+ 102750.000000000000 |            22
+  56750.000000000000 |            10
+  64000.000000000000 |             2
+(5 rows)
+
+postgres=# SELECT professor_id, salary, vacation_days FROM compensation ORDER BY vacation_days;
+ professor_id | salary | vacation_days 
+--------------+--------+---------------
+            1 |  64000 |             2
+            5 |  30000 |             4
+            2 |  35000 |             8
+            4 |  42950 |             8
+            3 |  56750 |            10
+            6 | 102750 |            22
+(6 rows)
+
+postgres=# SELECT professor_id, salary, vacation_days FROM compensation ORDER BY vacation_days LIMIT 2;
+ professor_id | salary | vacation_days 
+--------------+--------+---------------
+            1 |  64000 |             2
+            5 |  30000 |             4
+(2 rows)
+
+postgres=# SELECT professor_id, salary, vacation_days FROM compensation ORDER BY vacation_days LIMIT 2 OFFSET 2;
+ professor_id | salary | vacation_days 
+--------------+--------+---------------
+            2 |  35000 |             8
+            4 |  42950 |             8
+(2 rows)
+
+postgres=# SELECT AVG(salary) as average_salary, vacation_days FROM compensation GROUP BY vacation_days HAVING average_salary < 50000 ORDER BY vacation_days DESC;  
+- research indicates that PostgreSQL does not accept aliases, so this results in an **ERROR:  column "average_salary" does not exist**
