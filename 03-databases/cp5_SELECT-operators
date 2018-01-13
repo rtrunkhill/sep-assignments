@@ -1,0 +1,107 @@
+1.Write out a generic SELECT statement.
+    SELECT (what you're looking for)
+    FROM (the table you're looking in)
+    <optional> WHERE <condition of search>;
+
+2.Create a fun way to remember the order of operations in a SELECT statement, such as a mnemonic.
+    SELECT a Single Free Woman to help you with your search
+
+3.Create a pets database. Create a dogs table using this file. From the dogs table with the columns id, name, gender, age, weight, intake_date, breed, and in_foster.
+    CREATE TABLE pets (ID integer, NAME varchar(25), GENDER varchar(6), AGE float, WEIGHT(lbs) float, INTAKE_DATE date, BREED varchar(20), IN_FOSTER? boolean);
+    
+    a.Display the name, gender, and age of all dogs that are part Labrador.
+        SELECT name, gender, age
+        FROM pets
+        WHERE gender LIKE '%Labrador%';
+    
+    b.Display the ids of all dogs that are under 1 year old.
+        SELECT id
+        FROM pets
+        WHERE age < 1;
+    
+    c.Display the name and age of all dogs that are female and over 35lbs.
+        SELECT name, age
+        FROM pets
+        WHERE gender = 'female'
+        AND weight > 35;
+    
+    d.Display all of the information about all dogs that are not Shepherd mixes.
+        SELECT *
+        FROM pets
+        WHERE breed NOT LIKE '%Shephard%';
+    
+    e.Display the id, age, weight, and breed of all dogs that are either over 60lbs or Great Danes.
+        SELECT id, age, weight, breed
+        FROM pets
+        WHERE weight > 60
+        OR breed LIKE '%Great Dane%';
+
+4.From the cats table below, what pieces of data would be returned from these queries?
+    a.SELECT name, adoption_date FROM cats;
+        | name   | adoption_date |
+        |--------|---------------|
+        |Mushi   | 2016-03-22    |
+        |Seashell|               |
+        |Azul    | 2016-04-17    |
+        |Victoire| 2016-09-01    |
+        |Nala    |               |
+    
+    b. SELECT name, age FROM cats;
+        | name   | age  |
+        |--------|------|
+        |Mushi   | 1    |
+        |Seashell| 7    |
+        |Azul    | 3    |
+        |Victoire| 7    |
+        |Nala    | 1    |
+    
+
+5.From the cats table, write queries to select the following pieces of data.
+    a.Display all the information about all of the available cats.
+        SELECT *
+        FROM cats
+        WHERE adoption_date IS null;
+    
+    b.Choose one cat of each age to show to potential adopters.
+        SELECT *
+        FROM cats
+        WHERE name = 'Nala'
+        AND name = 'Seashell';
+        
+        (editors note: the other cats on the table have all been adopted!)
+    
+    c.Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+        SELECT name
+        FROM cats;
+
+6.List each comparison operator and explain, in your own words, when you would use it. Include a real world example for each.
+    >  - Comparing a value larger than another: I like all wines with an age greater than 5 years old.  
+    <  - Comparing a value smaller than another:  I only buy cars less than 5 years old.
+    >= - Comparing a value larger than or the same as another: I like all wines with an age 5 years old or more.  
+    <= - Comparing a value smaller than or the same as another: I only buy cars 5 years old and younger
+    =  - Comparing a value that is the same as another: I'll take six of one, or a half dozen of the other
+    <> - Two values are not equal: 6 eggs are is not the same as 7 eggs
+    AND - Both conditions must be met: I need steak AND potatoes
+    OR - Only a single condition must be met: I'm not that hungry, just give me the Steak OR the potatoes please.
+    NOT - Do not include anything after this operator:  I'll take the Steak and the Chicken but NOT the fish, eww.
+
+7.From the cats table below, what data would be returned from these queries?
+    a.SELECT name FROM cats WHERE gender = ‘F’;
+        | name   |
+        |--------|
+        |Seashell|
+        |Nala    |
+    
+    b.SELECT name FROM cats WHERE age <> 3;
+        | name   |
+        |--------|
+        |Mushi   |
+        |Seashell|
+        |Victoire|
+        |Nala    |
+        
+    c.SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+        | ID     |
+        |--------|
+        |00003   |
+        |00004   |
