@@ -1,0 +1,72 @@
+1.How do you find data that is held in two separate data tables?
+    Using the JOIN clause
+    
+2.Explain, in your own words, the difference between a CROSS JOIN, INNER JOIN, LEFT OUTER JOIN, RIGHT OUTER JOIN, and FULL OUTER JOIN. Give a real world example for each.
+    CROSS JOIN - returns every possible combination between two tables
+    INNER JOIN - returns one row in the table for each row that the tables share
+    LEFT OUTER JOIN - returns a table with each row from the first table and rows that match from the second
+    RIGHT OUTER JOIN - returns a table with each row from the second table and rows that match from the first 
+    FULL OUTER JOIN - a combination of LEFT OUTER and RIGHT OUTER JOINS.
+    
+3.Define primary key and foreign key. Give a real world example for each.
+    Primary Key - each row in the table has a unique value. 
+        IE in table of NFL teams listed by City and Team_names, the Team_names would be a primary key since each teams has a unique name
+    Foreign Key - when a primary key is included in another table as a non-unique value
+        IE in  table of Citys and their professional sports franchises, the NFL Team_names could be included as a foreign key
+
+4.Define aliasing.
+    Creating shortened variable for tables names in queries
+
+5.Change this query so that you are using aliasing:
+    *SELECT professor.name, compensation.salary, compensation.vacation_days FROM professor JOIN compensation ON professor.id = compensation.professor_id;
+        SELECT p.name, c.salary, c.vacation_days
+        FROM professor AS p
+        JOIN compensation AS c
+        ON p.id = c.professor_id;
+            
+6.Why would you use a NATURAL JOIN? Give a real world example.
+    When you want to join tables by every column shared by each table
+        IE a joined table of all NBA, NFL, NHL teams would include CITIES and Team_names natuarlly
+
+7.Build an Employees table and a Shifts table with appropriate primary and foreign keys. 
+    CREATE TABLE employees (id integer, name text, schedule text, off_days text);
+    CREATE TABLE shifts (working_days text, off_days text);
+    
+    Then, write queries to find the following information:
+    a. List all employees and all shifts.
+        SELECT e.schedule, s.working_days FROM employees AS e JOIN shifts AS s ON e.off_days = s.off_days;
+    b. Create a list of all possible schedules.
+        SELECT * FROM employees CROSS JOIN shifts;
+
+8.Given the Dogs table, the Adoptions table, the Adopters table, and the Volunteers table , please write queries to retrieve the following information.
+    DOGS TABLE: Dogs table has the columns id, name, gender, age, weight, intake_date, breed, and in_foster.
+    ADOPTIONS TABLE: Adoptions table has the columns id, adopter, cat, dog, fee, date
+    ADOPTERS TABLE: the Adopters table (which has the columns id, first_name, last_name, address, and phone number)
+    VOLUNTEERS TABLE: (which has the columns id, name, address, phone_number, available_to_foster, and foster_id)
+    
+    a. Create a list of all volunteers. If the volunteer is fostering a dog, include each dog as well.
+        SELECT v.*, d.* FROM volunteers AS v LEFT OUTER JOIN dogs AS d ON v.foster_id = d.id;
+        
+    b. List the adopter’s name and the pet’s name for each animal adopted within the past month to be displayed as a ‘Happy Tail’ on social media.
+        SELECT adoptions.adopter, dogs.name FROM adoption JOIN dogs ON adoptions.dog = dogs.id; 
+    
+    c. Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
+        SELECT FROM JOIN ON
+    d. Display a list of all cats and all dogs who have not been adopted.
+    e. Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
+
+9.Write a query to find the name of the person who adopted Seashell given the tables Cats (depicted below), Adoptions (depicted below), and Adopters which has columns for id, address, phone number, and name.
+    CATS TABLE: Cats table has the columns id, name, gender, age, intake_date, adoption_date
+    ADOPTIONS TABLE: Adoptions table has the columns id, adopter, cat, dog, fee, date
+    ADOPTERS TABLE: the Adopters table (which has the columns id, first_name, last_name, address, and phone number)
+    
+    a. Dogs table has the columns id, name, gender, age, weight, intake_date, breed, and in_foster.
+    b. Cats table has the columns id, name, gender, age, intake_date, adoption_date
+    c. Adoptions table has the columns id, adopter, cat, dog, fee, date
+
+10.Given the tables Books (isbn, title, author), Transactions(id, checked_out_date, checked_in_date, user_id, isbn), Holds(id, isbn, user_id, rank, date), and Patrons(id, name, fine_amount), write queries to find the following information:
+    a. To discern if the library should buy more copies of a given book, please provide the names and position, in order, of all of the patrons waiting in line for Harry Potter and the Sorcerer’s Stone.
+    b. Make a list of all book titles and denote whether or not a copy of that book is checked out.
+    c. In an effort to learn which books take longer to read, the librarians would like you to create a list of total checked out time by book name in the past month.
+    d. In order to learn which items should be retired, make a list of all books that have not been checked out in the past 5 years.
+    e. List all of the library patrons. If they have one or more books checked out, correspond the books to the patrons.
