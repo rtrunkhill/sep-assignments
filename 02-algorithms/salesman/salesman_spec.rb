@@ -31,7 +31,7 @@ RSpec.describe Salesman, type: Class do
 
     describe "#finds the proper path" do
         it "checks if start City == seattle" do
-            expect(search.shortest_path(seattle)).to eq ['Seattle', 'Portland', 'Boise', 'SLC', 'Vegas', 'Phoenix', 'LA', 'San Fransico']
+            expect(search.shortest_path(seattle, 7)).to eq ['Seattle', 'Portland', 'Boise', 'SLC', 'Vegas', 'Phoenix', 'LA', 'San Fransico']
         end
     end
 end
