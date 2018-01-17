@@ -29,12 +29,12 @@
         IE a joined table of all NBA, NFL, NHL teams would include CITIES and Team_names natuarlly
 
 7.Build an Employees table and a Shifts table with appropriate primary and foreign keys. 
-    CREATE TABLE employees (id integer, name text, schedule text, off_days text);
-    CREATE TABLE shifts (working_days text, off_days text);
+    CREATE TABLE employees (id integer, name text, sched_id integer);
+    CREATE TABLE shifts (sched_id integer, sched text, off_days text);
     
     Then, write queries to find the following information:
     a. List all employees and all shifts.
-        SELECT e.schedule, s.working_days FROM employees AS e JOIN shifts AS s ON e.off_days = s.off_days;
+        SELECT e.*, s.sched, s.off_days FROM employees AS e JOIN shifts AS s ON e.sched_id = s.sched_id;
     b. Create a list of all possible schedules.
         SELECT * FROM employees CROSS JOIN shifts;
 
@@ -48,7 +48,7 @@
         SELECT v.*, d.* FROM volunteers AS v LEFT OUTER JOIN dogs AS d ON v.foster_id = d.id;
         
     b. List the adopter’s name and the pet’s name for each animal adopted within the past month to be displayed as a ‘Happy Tail’ on social media.
-        SELECT adoptions.adopter, dogs.name FROM adoption JOIN dogs ON adoptions.dog = dogs.id; 
+        SELECT adoptions.adopter, dogs.name FROM adoption JOIN dogs ON adoptions.dog = dogs.id;  
     
     c. Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
         SELECT FROM JOIN ON

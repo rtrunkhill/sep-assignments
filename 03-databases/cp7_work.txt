@@ -24,7 +24,7 @@ postgres=# SELECT professor.professor, department.department_name FROM professor
 --------------------------+-------------------------------
  Albus Dumbledore         | Transfiguration
  Severus Snape            | Defence Against the Dark Arts
- Dolores Umbridge         | Defence Against the Dark Arts
+ Dolores Umbridge         | Defence Against the Dark Artsl
  Bathsheda Babbling       | Study of Ancient Runes
  Rubeus Hagrid            | Care of Magical Creatures
  Wilhelmina Grubbly-Plank | Care of Magical Creatures
