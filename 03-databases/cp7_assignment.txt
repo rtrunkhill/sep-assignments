@@ -51,22 +51,37 @@
         SELECT adoptions.adopter, dogs.name FROM adoption JOIN dogs ON adoptions.dog = dogs.id;  
     
     c. Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
-        SELECT FROM JOIN ON
+        SELECT adoptions.adopter, dogs.name FROM adoptions CROSS JOIN dogs WHERE adoptions.dog IS false AND dogs.in_foster IS false;
+
     d. Display a list of all cats and all dogs who have not been adopted.
+        SELECT dogs.name FROM dogs WHERE in_foster IS false UNION SELECT cats.name FROM cats WHERE adoption_date IS null;
+        
     e. Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
+        SELECT volunteers.name, volunteers.available_to_foster, dogs.name, dogs.in_foster 
+        FROM volunteers
+        FULL OUTER JOIN dogs
+        ON volunteers.foster_id = dogs.id
+        where (volunteers.available_to_foster = true 
+        OR volunteers.available_to_foster is null) or dogs.in_foster = false;
 
-9.Write a query to find the name of the person who adopted Seashell given the tables Cats (depicted below), Adoptions (depicted below), and Adopters which has columns for id, address, phone number, and name.
-    CATS TABLE: Cats table has the columns id, name, gender, age, intake_date, adoption_date
-    ADOPTIONS TABLE: Adoptions table has the columns id, adopter, cat, dog, fee, date
-    ADOPTERS TABLE: the Adopters table (which has the columns id, first_name, last_name, address, and phone number)
-    
-    a. Dogs table has the columns id, name, gender, age, weight, intake_date, breed, and in_foster.
-    b. Cats table has the columns id, name, gender, age, intake_date, adoption_date
-    c. Adoptions table has the columns id, adopter, cat, dog, fee, date
+9.Write a query to find the name of the person who adopted Seashell given the tables Cats (depicted below), Adoptions (depicted below), and Adopters
+    SELECT adopter FROM adoptions WHERE cat = 'Seashell';
 
-10.Given the tables Books (isbn, title, author), Transactions(id, checked_out_date, checked_in_date, user_id, isbn), Holds(id, isbn, user_id, rank, date), and Patrons(id, name, fine_amount), write queries to find the following information:
+10.Given the tables Books,Transactions, Holds, and Patrons, write queries to find the following information:
     a. To discern if the library should buy more copies of a given book, please provide the names and position, in order, of all of the patrons waiting in line for Harry Potter and the Sorcerer’s Stone.
+        SELECT patrons.name, holds.rank FROM patrons JOIN holds ON patrons.id = holds.user_id WHERE holds.isbn = '555-5-55-555555-5';
+        
     b. Make a list of all book titles and denote whether or not a copy of that book is checked out.
+        SELECT books.title, transactions.checked_out, transactions.checked_in FROM books LEFT JOIN transactions ON books.isbn = transactions.isbn;
+   
     c. In an effort to learn which books take longer to read, the librarians would like you to create a list of total checked out time by book name in the past month.
+        SELECT checked_in - checked_out AS days_checked_out FROM transactions; 
+        
     d. In order to learn which items should be retired, make a list of all books that have not been checked out in the past 5 years.
+        SELECT books.title, transactions.checked_out FROM books JOIN transactions ON books.isbn = transactions.isbn WHERE checked_out <= '2013-01-18';
+    
     e. List all of the library patrons. If they have one or more books checked out, correspond the books to the patrons.
+        SELECT patrons.name, transactions.checked_out, books.title 
+        FROM patrons 
+        LEFT JOIN transactions ON patrons.id = transactions.user_id
+        LEFT JOIN books ON transactions.isbn = books.isbn;

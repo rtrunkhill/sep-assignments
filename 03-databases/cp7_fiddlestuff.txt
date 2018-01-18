@@ -54,10 +54,10 @@ insert into dogs (id, name, gender, age, weight, intake_date, breed, in_foster )
 
 insert into cats (id, name, gender, age, intake_date, adoption_date ) values 
   (1,' Spike', 'F', 15,'2017-10-15', '2017-10-16'),
-  (2, 'Pippen', 'F', 10,'2016-07-08', '2017-07-08'),
-  (3, 'Toot', 'F', 8.5, '2017-12-26', '2018-01-14'),
+  (2, 'Pippen', 'F', 10,'2016-07-08', null),
+  (3, 'Toot', 'F', 8.5, '2017-12-26', null),
   (4, 'Sherlock', 'M', 1.5,'2014-02-14', '2015-02-14'),
-  (5, 'Shadow', 'M', 13, '2015-09-10', '2016-09-10'),
+  (5, 'Shadow', 'M', 13, '2015-09-10', null),
   (6, 'Fuzzy', 'F', 3, '2017-03-26', '2017-09-26');
   
 insert into adoptions (id, adopter, cat, dog, fee, date) values 
@@ -83,3 +83,47 @@ insert into volunteers (id, name, address, phone_number, available_to_foster, fo
   (4, 'jennifer', 'boise', 4567891212, true, 4),
   (5, 'jacob', 'helena', 5678912345, true, 5),
   (6, 'jenna', 'salem', 6789123456, false, 6);
+  
+SELECT volunteers.name, volunteers.available_to_foster, dogs.name, dogs.in_foster FROM volunteers JOIN dogs ON volunteers.foster_id =  dogs.id WHERE dogs.in_foster IS false;
+
+/* SELECT volunteers.name, volunteers.available_to_foster, dogs.name, dogs.in_foster 
+FROM volunteers LEFT JOIN dogs ON volunteers.foster_id =  dogs.id;
+WHERE volunteers.available_to_foster = true;
+
+ Create a list of volunteers who are available to foster. 
+ If they currently are fostering a dog, include the dog. 
+ Also include all dogs who are not currently in foster homes. */
+
+
+CREATE TABLE books (isbn varchar(17), title text, author text);
+CREATE TABLE transactions (id integer, checked_out date, checked_in date, user_id integer, isbn varchar(17));
+CREATE TABLE holds (id integer, isbn varchar(17), user_id integer, rank integer, date date);
+CREATE TABLE patrons (id integer, name text, fine_amount money);
+
+INSERT INTO books (isbn, title, author) VALUES
+  ('111-1-11-111111-1', 'Sins of my Father', 'Barrack Obama'),
+  ('222-2-22-222222-2', 'Art of the Deal', 'Donald Trump'),
+  ('333-3-33-333333-3', 'Obama an Intimate Portraiot', 'Pete Souza'),
+  ('444-4-44-444444-4', 'Fire and Fury', 'Michael Wolff'),
+  ('555-5-55-555555-5', 'Harry Potter and the Sorcerers Stone', 'Some Chick');
+   
+INSERT INTO transactions (id, checked_out, checked_in, user_id, isbn) VALUES
+  (1, '2017-02-14', '2017-03-25', 1, '444-4-44-444444-4'),
+  (2, '2017-03-26', '2017-04-01', 2, '111-1-11-111111-1'),
+  (3, '2018-01-05', '2018-01-17', 3, '333-3-33-333333-3'),
+  (4, '2017-10-31', '2017-11-25', 1, '222-2-22-222222-2'),
+  (5, '2010-01-01', '2010-01-05', 2, '555-5-55-555555-5');
+  
+INSERT INTO holds (id, isbn, user_id, rank, date) VALUES
+  (1, '222-2-22-222222-2', 3, 1, '2018-01-14'),
+  (2, '111-1-11-111111-1', 1, 2, '2018-01-15'),
+  (3, '444-4-44-444444-4', 4, 3, '2018-01-16'),
+  (4, '333-3-33-333333-3', 2, 4, '2018-01-17'),
+  (5, '555-5-55-555555-5', 3, 5, '2018-01-17'),
+  (6, '555-5-55-555555-5', 4, 6, '2018-01-17');
+  
+INSERT INTO patrons (id, name, fine_amount) VALUES
+  (1, 'rory', '$23.50'),
+  (2, 'sarah', '$3.25'),
+  (3, 'christine', '$100.00'),
+  (4, 'barrack', '$0.00' );
