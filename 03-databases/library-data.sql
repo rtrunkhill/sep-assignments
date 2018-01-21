@@ -1,4 +1,4 @@
-CREATE TABLE books (
+ CREATE TABLE books (
     id integer,
     title text,
     author text 
