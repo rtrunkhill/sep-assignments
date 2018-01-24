@@ -24,3 +24,40 @@ INSERT INTO visits (id, guest_id, room_id, check_in, check_out) VALUES
   (4, 2, 5, '2018-02-10', '2018-02-16'),
   (5, 3, 1, '2017-12-23', '2018-01-03'),
   (6, 4, 6, '2017-07-02', '2017-07-06');
+
+
+CREATE TABLE students (id integer, name text);
+CREATE TABLE math (class_id integer DEFAULT 1, student integer, grade varchar(1));
+CREATE TABLE science (class_id integer DEFAULT 2, student integer, grade varchar(1));
+CREATE TABLE history (class_id integer DEFAULT 3, student integer, grade varchar(1));
+
+
+INSERT INTO students (id, name) VALUES
+  (1, 'rory'),
+  (2, 'sarah'),
+  (3, 'lisa'),
+  (4, 'tove'),
+  (5, 'cheryll'),
+  (6, 'michelle');
+  
+  
+INSERT INTO math (student, grade) VALUES
+  (1, 'c'),
+  (2, 'c'),
+  (3, 'a');
+
+INSERT INTO science (student, grade) VALUES
+  (4, 'f'),
+  (5, 'b'),
+  (6, 'c');
+  
+INSERT INTO history (student, grade) VALUES
+  (2, 'b'),
+  (4, 'f'),
+  (6, 'c');
+  
+SELECT students.*, math.grade AS math_grade, science.grade AS science_grade, history.grade AS history_grade
+FROM students 
+JOIN math ON students.id = math.student
+JOIN science ON students.id = science.student
+JOIN history ON students.id = history.student; 
