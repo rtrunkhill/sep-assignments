@@ -1,0 +1,38 @@
+1.In your own words, explain the benefits of normalization. Include a real-world scenario where normalization is necessary.
+    normalization is the process of breaking down table into smaller table in order to make processing information easier.  
+    If you're a university with 7000 students that offers 1000 different classes, having all students, classes, professors and grades on the same table wouldnt make sense.
+
+2.List and explain the different normal forms and how they relate to one another, with regard to your real-world scenario in the first question.
+    *1NF - a column cannot contain multiple values
+        A student couldn't have a 'grades' column that then contains 5-6 grades in one cell
+        
+    *2NF - the table must be 1NF compliant AND attributes must be dependant on the primary key itself
+        The same grades column would have to be moved to another table because grades are indirectly connected to a student via classes
+        
+    *3NF - the table must be 2NF compliant AND non-prime attributes cannot have transiitive functional dependance
+        The professors column would have to be moved in this cause because it is dependant on classes
+        
+    *BCNF - the table must be 3NF compliant ANDevery dependant column must be a "super key" of the table'
+        there would be multiple tables of "super key" professors are dependant on classes.  grades are dependant on classes, etc
+
+3.The student_records table below shows the students and their grades in different subjects.  Convert this table to the third normal form (3NF).
+    A. Student table - student_id, student_email, student_name
+    B. Prof table - professor_id, professor_name, subject
+    C. Grades table - student_id, subject, grade, professor_id
+
+4.In your own words, explain the potential disadvantages of normalizing the data above. What are its trade-offs? Discuss this with your mentor.
+    normalzing data can create more complex searches that require intricate JOIN statements. It also effects performance as searches will take longer as it has to access multiple tables.
+    keeping all the date on one table makes searching for the data quicker and easier, and maintains data integerity.
+
+5.Looking at the tables you have normalized. If you need to denormalize to improve query performance or speed up reporting, how would you carry out denormalization for this database design? Discuss potential strategies with your mentor.
+    Combine the prof and grades tables into one table w/ professor_id only once
+    
+6. Discuss the trade-offs between data normalization and denormalization in this scenario with your mentor.
+    Discussed during meeting. 
+
+entry_id	student_id	professor_id	subject	    grade	professor_name	student_email	            student_name
+    1       	1	        2	        Philosophy	A	    William C	    john.b20@hogwarts.edu	    John B
+    2       	2	        2	        Philosophy	C	    William C	    sarah.s20@hogwarts.edu	    Sarah S
+    3	        3	        1	        Economics	A	    Natalie M   	martha.l20@hogwarts.edu	    Martha L
+    4       	4	        3	        Mathematics	B	    Mark W	        james.g20@hogwarts.edu	    James G
+    5	        5	        1	        Economics	B	    Natalie M   	stanley.p20@hogwarts.edu	Stanley P
