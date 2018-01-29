@@ -1,0 +1,95 @@
+CREATE TABLE employees (id integer, name text);
+CREATE TABLE shifts (id integer, sched varchar(5), emp integer);
+
+INSERT INTO employees (id, name) VALUES
+  (1, 'rory'),
+  (2, 'sarah'),
+  (3, 'christine'),
+  (4, 'todd'),
+  (5, 'jeff'),
+  (6, 'mark'),
+  (7, 'jenny');
+  
+INSERT INTO shifts (id, sched, emp) VALUES
+  (1, 'm-f', 1),
+  (1, 'm-f', 2),
+  (2, 'tu-sa', 3),
+  (3, 'w-su', 4),
+  (4, 'th-m', 5),
+  (5, 'f-tu', 6),
+  (6, 'sa-w', 7);
+  
+  SELECT * FROM volunteers;
+(SELECT adoptions.name FROM adoptions IF( adoptions.name IS NOT null))
+
+create table dogs (
+  id integer,
+  name varchar(50),
+  gender text,
+  age float,
+  weight integer,
+  intake_date date,
+  breed text,
+  in_foster boolean
+);
+
+create table adoptions (
+  id integer,
+  adopter text,
+  cat boolean,
+  dog boolean,
+  fee integer,
+  date date
+);
+
+create table adopters (
+  id integer,
+  first_name text,
+  last_name text,
+  address text,
+  phone_number bigint
+ );
+ 
+ create table volunteers (
+   id integer,
+   name text,
+   address text,
+   phone_number bigint,
+   available_to_foster boolean,
+   foster_id integer
+ );
+ 
+insert into dogs (id, name, gender, age, weight, intake_date, breed, in_foster ) values 
+  (1,'Justice', 'M', 3.5, 105, '2016-11-05', 'shepwheiler', true),
+  (2, 'Johnny', 'M', 1.5, 95, '2017-12-17', 'blood hound', false ),
+  (3, 'June', 'F', 1.5, 85, '2017-05-16', 'blood hound', true),
+  (4, 'Daisy', 'F', 1.5, 80, '2017-04-02', 'blood hound', true),
+  (5, 'Flash', 'M', 12, 75, '2015-09-03', 'basset hound', false),
+  (6, 'Vader', 'M', 5, 35, '2013-03-25', 'french bulldog', false),
+  (7, 'Fido', 'M', 5, 15, '2016-03-25', 'french bulldog', true);
+  
+insert into adoptions (id, adopter, cat, dog, fee, date) values 
+  (1, 'Rory', false, true, 50, '2015-03-25'),
+  (2, 'Sarah', false, true, 45, '2016-02-14'),
+  (3, 'Chritine', true, false, 35, '2017-01-01'),
+  (4, 'Jay', true, false, 100, '2016-05-01'),
+  (5, 'Jeremiah', false, true, 75, '2014-10-31'),
+  (6, 'TJ', true, false, 25, '2015-07-04');
+  
+insert into adopters (id, first_name, last_name, address, phone_number) values
+   (1, 'Rory', 'Trunkhill', 'las vegas', 5555555555),
+   (2, 'Sarah', 'Hawkins', 'las vegas', 6666666666),
+   (3, 'Christine', 'Le', 'san franscio', 7777777777),
+   (4, 'Jay', 'Peterson', 'green bay', 8888888888),
+   (5, 'Jeremiah', 'McMillen', 'pittsburgh', 9999999999),
+   (6, 'TJ', 'McMacky', 'boston', 1111111111);
+
+insert into volunteers (id, name, address, phone_number, available_to_foster, foster_id) values
+  (1, 'jim', 'seattle', 1234567899, true, 1),
+  (2, 'john', 'portland', 2345678901, true, null),
+  (3, 'jessica', 'bend',  3456789120, false, 3),
+  (4, 'jennifer', 'boise', 4567891212, true, 4),
+  (5, 'jacob', 'helena', 5678912345, true, null),
+  (6, 'jenna', 'salem', 6789123456, false, 7);
+  
+  
