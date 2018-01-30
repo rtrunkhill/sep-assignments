@@ -28,18 +28,36 @@
 
 8.Given a dogs table, adoptions table, adopters table, and volunteers table , write queries to retrieve the following information. All tables are described below.
     a.Create a list of all volunteers. If the volunteer is fostering a dog, include each dog as well.
-    
+        SELECT volunteers.name AS volunteers, (SELECT dogs.name FROM dogs WHERE dogs.id = volunteers.foster_id) AS dog_fostered FROM volunteers;
+
     b.List the adopter’s name and the pet’s name for each animal adopted within the past month to be displayed as a ‘Happy Tail’ on social media.
+        SELECT cats.name AS animal_adopted, (SELECT adoptions.adopter FROM adoptions WHERE adoptions.cat_id = cats.id)
+        FROM cats 
+        WHERE id IN (SELECT adoptions.cat_id FROM adoptions WHERE date > '2017-12-31' AND date < '2018-01-29' );
     
     c.Create a list of adopters who have not yet chosen a dog to adopt and generate all possible combinations of adopters and available dogs.
-    
+        SELECT adoptions.adopter, dogs.name FROM adoptions CROSS JOIN dogs
+        WHERE adoptions.dog_id IS null AND dogs.in_foster IS false;
+        **Rory's note -> I couldn't find a subqueries alternative to a CROSS JOIN
+        
     d.Display a list of all cats and all dogs who have not been adopted.
+        SELECT name FROM cats WHERE id NOT IN (SELECT cat_id FROM adoptions WHERE cat_id IS NOT null)
+        UNION
+        SELECT name FROM dogs WHERE id NOT IN (SELECT dog_id FROM adoptions WHERE dog_id IS NOT null);
     
     e.Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
+        SELECT name AS vols_available FROM volunteers WHERE available_to_foster IS true;
+        SELECT name AS vols_fostering FROM volunteers WHERE foster_id NOT IN (SELECT dog_id FROM adoptions WHERE dog_id IS NOT null);
+        SELECT name AS dogs_available FROM dogs WHERE in_foster IS false;
 
 9.Write a query to find the name of the person who adopted Seashell given the tables cats, adoptions, and adopters. All tables are described below
+    SELECT adopter FROM adoptions
+    WHERE cat_id IN
+        (SELECT id 
+        FROM cats 
+        WHERE name = 'Seashell');
 
-10.Given the tables books (isbn, title, author), transactions (id, checked_out_date, checked_in_date, user_id, isbn), holds (id, isbn, user_id, rank, date), and patrons (id, name, fine_amount), write queries to find the following information:
+10.Given the tables books, transactions, holds, and patrons, write queries to find the following information:
     a.To discern if the library should buy more copies of a given book, please provide the names and position, in order, of all of the patrons waiting in line for Harry Potter and the Sorcerer’s Stone.
     
     b.Make a list of all book titles and denote whether or not a copy of that book is checked out.
