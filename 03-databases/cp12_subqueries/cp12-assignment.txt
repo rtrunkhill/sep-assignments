@@ -59,12 +59,17 @@
 
 10.Given the tables books, transactions, holds, and patrons, write queries to find the following information:
     a.To discern if the library should buy more copies of a given book, please provide the names and position, in order, of all of the patrons waiting in line for Harry Potter and the Sorcerer’s Stone.
-    
+        SELECT name AS waiting_for_harry FROM patrons WHERE id IN (SELECT rank FROM holds WHERE isbn = '555-5-55-555555-5');
+   
     b.Make a list of all book titles and denote whether or not a copy of that book is checked out.
+        SELECT (SELECT title FROM books WHERE books.isbn = transactions.isbn) AS books, checked_out, checked_in FROM transactions;
     
     c.In an effort to learn which books take longer to read, the librarians would like you to create a list of total checked out time by book name in the past month.
+        SELECT (SELECT title FROM books WHERE books.isbn = transactions.isbn) AS books, (checked_in - checked_out) AS total_time_out
+        FROM transactions;
     
     d.In order to learn which items should be retired, make a list of all books that have not been checked out in the past 5 years.
+        SELECT title from books WHERE isbn IN(SELECT isbn FROM transactions WHERE checked_out < '2013-02-01');
     
     e.List all of the library patrons. If they have one or more books checked out, correspond the books to the patrons.
 
