@@ -166,3 +166,45 @@ SELECT p.name, checked_out.isbn
 FROM patrons AS p, (SELECT * FROM transactions WHERE checked_out IS NOT null AND checked_in IS null ) AS checked_out
 WHERE ;
 __________________________________________________________________________________________________________________________
+
+CREATE TABLE airplanes (model text, seat_cap integer, range integer);
+CREATE TABLE flights (
+  flight_number integer, 
+  destination text, 
+  origin text, 
+  company text, 
+  distance integer, 
+  flight_time time, 
+  airplane_model text);
+
+CREATE TABLE transactions (
+  id integer, 
+  seats_sold integer, 
+  total_revenue money, 
+  total_cost money, 
+  flight_number integer, 
+  date date);
+  
+INSERT INTO airplanes (model, seat_cap, range) VALUES 
+  (usbigplane, 1000, 7000),
+  (usmidplane, 500, 5000),
+  (ussmallplane, 250, 3000),
+  (cabigplane, 900, 8000),
+  (camidplane, 400, 6000),
+  (casmallplane, 150, 2000);
+  
+INSERT INTO flights (flight_number, destination, origin, company, distance, flight_time, airplane_model) VALUES
+  (),
+  (),
+  (),
+  (),
+  (),
+  ();
+  
+INSERT INTO transactions (id, seats_sold, total_revenue, total_cost, flight_number, date) VALUES
+  (),
+  (),
+  (),
+  (),
+  (),
+  ();

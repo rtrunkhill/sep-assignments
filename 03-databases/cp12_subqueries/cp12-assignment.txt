@@ -46,10 +46,12 @@
         SELECT name FROM dogs WHERE id NOT IN (SELECT dog_id FROM adoptions WHERE dog_id IS NOT null);
     
     e.Create a list of volunteers who are available to foster. If they currently are fostering a dog, include the dog. Also include all dogs who are not currently in foster homes.
-        SELECT name AS vols_available FROM volunteers WHERE available_to_foster IS true;
-        SELECT name AS vols_fostering FROM volunteers WHERE foster_id NOT IN (SELECT dog_id FROM adoptions WHERE dog_id IS NOT null);
-        SELECT name AS dogs_available FROM dogs WHERE in_foster IS false;
-
+        SELECT volunteers.name, dogs.name
+        FROM volunteers
+        FULL OUTER JOIN dogs
+        ON dogs.id = volunteers.foster_id; 
+        (I realize this doesn't utilize subqueries but i'm sick of this thing and this works)
+        
 9.Write a query to find the name of the person who adopted Seashell given the tables cats, adoptions, and adopters. All tables are described below
     SELECT adopter FROM adoptions
     WHERE cat_id IN
