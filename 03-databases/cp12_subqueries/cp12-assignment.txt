@@ -71,7 +71,7 @@
         FROM transactions;
     
     d.In order to learn which items should be retired, make a list of all books that have not been checked out in the past 5 years.
-        SELECT title from books WHERE isbn IN(SELECT isbn FROM transactions WHERE checked_out < '2013-02-01');
+        SELECT title FROM books WHERE isbn IN(SELECT isbn FROM transactions WHERE checked_out < '2013-02-01');
     
     e.List all of the library patrons. If they have one or more books checked out, correspond the books to the patrons.
         SELECT patrons.name, checked_out.isbn     
@@ -82,6 +82,9 @@
 
 11.Given the following tables in an airliner database, find the following information. airplanes (model, seat capacity, range), flights(flight_number, destination, origin, company, distance, flight_time, airplane_model), transactions(id, seats_sold, total_revenue, total_cost, flight_number, date)
     a.To determine the most profitable airplanes, find all airplane models where each flight has had over 100 paying customers in the past month.
+        SELECT (SELECT airplane_model FROM flights WHERE flights.flight_number = transactions.flight_number) 
+        FROM transactions 
+        WHERE seats_sold > 100 AND date > '2018-01-03';
     
     b.To determine the most profitable flights, find all destination-origin pairs where 90% or more of the seats have been sold in the past month.
     

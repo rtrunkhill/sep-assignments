@@ -174,7 +174,7 @@ CREATE TABLE flights (
   origin text, 
   company text, 
   distance integer, 
-  flight_time time, 
+  flight_time integer, 
   airplane_model text);
 
 CREATE TABLE transactions (
