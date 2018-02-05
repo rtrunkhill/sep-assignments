@@ -87,7 +87,17 @@
         WHERE seats_sold > 100 AND date > '2018-01-03';
     
     b.To determine the most profitable flights, find all destination-origin pairs where 90% or more of the seats have been sold in the past month.
-    
+        SELECT c.destination, c.origin
+        FROM transactions t, 
+        (SELECT a.seat_cap, f.flight_number, f.destination, f.origin FROM flights f, airplanes a WHERE f.airplane_model = a.model) c
+        WHERE t.flight_number = c.flight_number AND t.seats_sold / c.seat_cap >= .9 AND t.date > '2018-01-05';
+            
     c.The airline is looking to expand its presence in the US Southeast and globally. Find the total revenue of any flight arriving at or departing from Atlanta.
+        SELECT SUM(t.total_revenue)
+        FROM transactions t, 
+              (SELECT flight_number
+              FROM flights f
+              WHERE f.destination = 'atlanta' OR f.origin = 'atlanta') a
+        WHERE t.flight_number = a.flight_number;
 
 12.Compare the subqueries you've written above. Compare them to the joins you wrote in Checkpoint 6. Which ones are more readable? Which were more logical to write?
