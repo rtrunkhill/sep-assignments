@@ -101,3 +101,6 @@
         WHERE t.flight_number = a.flight_number;
 
 12.Compare the subqueries you've written above. Compare them to the joins you wrote in Checkpoint 6. Which ones are more readable? Which were more logical to write?
+    I think it depends on the situation.  To me, joins are easier to read but perhaps harder to understand.  There were many times when i was writing the subqueries
+    where I could envision the join statement and be done with it.  Some joins dont have logical subquery counterparties, like cross joins.  I thint it's a matter o
+    having the proper tool for the job when it comes to deciding to use subqueries or JOINS
